@@ -1,161 +1,124 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Plane, User, Save, Plus, Trash2 } from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Plane, Calendar, Clock } from 'lucide-react';
 
 const GuestForm = () => {
-  const [guests, setGuests] = useState([]);
-  const [formData, setFormData] = useState({
-    name: '',
-    arrival: '',
-    departure: ''
-  });
-  const [isAdding, setIsAdding] = useState(false);
-
-  useEffect(() => {
-    const savedGuests = localStorage.getItem('guestList');
-    if (savedGuests) {
-      setGuests(JSON.parse(savedGuests));
+  const allGuests = [
+    {
+      name: 'Shivani',
+      arrival: '4:40 PM, Nov 28',
+      departure: '12:35 PM, Dec 1',
+      highlight: true
+    },
+    {
+      name: 'Simmu',
+      arrival: '4:40 PM, Nov 28',
+      departure: '8:23 AM, Dec 1',
+      highlight: true,
+      noteText: 'Bride'
+    },
+    {
+      name: 'Kanchan',
+      arrival: '4:40 PM, Nov 28',
+      departure: 'TBD, Dec 3'
+    },
+    {
+      name: 'Tanha',
+      arrival: '6:45 PM, Nov 28',
+      departure: '4:58 PM, Nov 30'
+    },
+    {
+      name: 'Grusha',
+      arrival: '4:40 PM, Nov 28',
+      departure: '12:35 PM, Dec 2'
+    },
+    {
+      name: 'Avani',
+      arrival: '10:38 AM, Nov 28',
+      departure: '11:53 AM, Dec 1'
+    },
+    {
+      name: 'Yashica',
+      arrival: 'TBD (provide flight times)',
+      departure: 'TBD (provide flight times)',
+      note: true,
+      noteText: 'Needs to provide flight times'
+    },
+    {
+      name: 'Tanvi',
+      arrival: 'TBD (provide flight times)',
+      departure: 'TBD (provide flight times)',
+      note: true,
+      noteText: 'Needs to provide flight times'
+    },
+    {
+      name: 'Cynthia',
+      arrival: 'Nov 28 (provide flight times)',
+      departure: 'Dec 1 (provide flight times)',
+      note: true,
+      noteText: 'Needs to provide flight times'
     }
-  }, []);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newGuests = [...guests, { ...formData, id: Date.now() }];
-    setGuests(newGuests);
-    localStorage.setItem('guestList', JSON.stringify(newGuests));
-    setFormData({ name: '', arrival: '', departure: '' });
-    setIsAdding(false);
-  };
-
-  const handleDelete = (id) => {
-    const newGuests = guests.filter(guest => guest.id !== id);
-    setGuests(newGuests);
-    localStorage.setItem('guestList', JSON.stringify(newGuests));
-  };
+  ];
 
   return (
-    <div className="w-full max-w-md mx-auto bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-teal-50 my-8">
-      <div className="flex justify-between items-center mb-6">
-        <h3 className="text-xl font-serif text-teal-900 flex items-center gap-2">
+    <div className="w-full max-w-4xl mx-auto bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-teal-50 my-8">
+      <div className="mb-6">
+        <h3 className="text-xl font-serif text-teal-900 flex items-center gap-2 mb-4">
           <Plane className="text-teal-600" size={20} />
           Flight Details
         </h3>
-        <button
-          onClick={() => setIsAdding(!isAdding)}
-          className="text-xs font-bold uppercase tracking-wider text-teal-600 hover:text-teal-800 flex items-center gap-1"
-        >
-          {isAdding ? 'Cancel' : <><Plus size={14} /> Add Yours</>}
-        </button>
       </div>
 
-      <AnimatePresence mode="wait">
-        {isAdding && (
-          <motion.form
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            onSubmit={handleSubmit}
-            className="space-y-4 mb-8 overflow-hidden"
-          >
-            <div>
-              <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Name</label>
-              <div className="relative">
-                <User className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="Your Name"
-                  className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 outline-none transition-all"
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Arrival</label>
-                <input
-                  type="datetime-local"
-                  name="arrival"
-                  value={formData.arrival}
-                  onChange={handleChange}
-                  className="w-full px-3 py-2 rounded-lg border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 outline-none transition-all text-sm"
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Departure</label>
-                <input
-                  type="datetime-local"
-                  name="departure"
-                  value={formData.departure}
-                  onChange={handleChange}
-                  className="w-full px-3 py-2 rounded-lg border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 outline-none transition-all text-sm"
-                  required
-                />
-              </div>
-            </div>
-
-            <button
-              type="submit"
-              className="w-full bg-teal-600 text-white font-bold py-2 rounded-lg hover:bg-teal-700 transition-colors flex items-center justify-center gap-2"
-            >
-              <Save size={18} />
-              Save Flight Info
-            </button>
-          </motion.form>
-        )}
-      </AnimatePresence>
-
+      {/* All guests' flight details */}
       <div className="space-y-3">
-        {guests.length === 0 ? (
-          <p className="text-center text-gray-400 text-sm italic py-4">No flights added yet. Be the first!</p>
-        ) : (
-          guests.map(guest => (
-            <motion.div
-              key={guest.id}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="bg-white border border-teal-50 rounded-xl p-4 shadow-sm relative group"
-            >
-              <button
-                onClick={() => handleDelete(guest.id)}
-                className="absolute top-2 right-2 text-gray-300 hover:text-red-400 opacity-0 group-hover:opacity-100 transition-opacity"
-              >
-                <Trash2 size={14} />
-              </button>
-
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center text-teal-700 font-bold text-sm">
-                  {guest.name.charAt(0).toUpperCase()}
+        {allGuests.map((guest, idx) => (
+          <motion.div
+            key={guest.name}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: idx * 0.05 }}
+            className={`p-4 rounded-xl border ${guest.highlight
+              ? 'bg-teal-50 border-teal-200'
+              : guest.note
+                ? 'bg-amber-50 border-amber-200'
+                : 'bg-gray-50 border-gray-200'
+              }`}
+          >
+            <div className="flex items-center gap-2 mb-2">
+              <div className={`w-2 h-2 rounded-full ${guest.highlight
+                ? 'bg-teal-500'
+                : guest.note
+                  ? 'bg-amber-500'
+                  : 'bg-gray-400'
+                }`}></div>
+              <span className="font-bold text-gray-900">{guest.name}</span>
+              {guest.noteText && (
+                <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${guest.highlight
+                  ? 'bg-teal-200 text-teal-800'
+                  : 'bg-amber-200 text-amber-800'
+                  }`}>
+                  {guest.noteText}
+                </span>
+              )}
+            </div>
+            <div className="grid md:grid-cols-2 gap-4 text-sm">
+              <div className="flex items-start gap-2">
+                <Calendar size={14} className="text-gray-500 mt-0.5 shrink-0" />
+                <div>
+                  <span className="text-gray-500 text-xs">Arrival:</span>
+                  <div className="text-gray-700">{guest.arrival}</div>
                 </div>
-                <p className="font-bold text-teal-900">{guest.name}</p>
               </div>
-
-              <div className="grid grid-cols-2 gap-2 text-xs">
-                <div className="bg-gray-50 p-2 rounded border border-gray-100">
-                  <span className="block text-gray-400 uppercase text-[10px]">Arriving</span>
-                  <span className="font-medium text-gray-700">
-                    {new Date(guest.arrival).toLocaleString('en-US', { weekday: 'short', hour: 'numeric', minute: '2-digit' })}
-                  </span>
-                </div>
-                <div className="bg-gray-50 p-2 rounded border border-gray-100">
-                  <span className="block text-gray-400 uppercase text-[10px]">Departing</span>
-                  <span className="font-medium text-gray-700">
-                    {new Date(guest.departure).toLocaleString('en-US', { weekday: 'short', hour: 'numeric', minute: '2-digit' })}
-                  </span>
+              <div className="flex items-start gap-2">
+                <Clock size={14} className="text-gray-500 mt-0.5 shrink-0" />
+                <div>
+                  <span className="text-gray-500 text-xs">Departure:</span>
+                  <div className="text-gray-700">{guest.departure}</div>
                 </div>
               </div>
-            </motion.div>
-          ))
-        )}
+            </div>
+          </motion.div>
+        ))}
       </div>
     </div>
   );
