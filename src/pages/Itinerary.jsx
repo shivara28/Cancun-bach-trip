@@ -8,37 +8,37 @@ const Itinerary = () => {
             day: 'Friday',
             date: 'Nov 28',
             items: [
-                { id: 't1', time: 'Evening', title: 'Arrivals', icon: 'Plane', desc: 'Land in Cancun & Transfer to Hotel' },
-                { id: 't2', time: 'Evening', title: 'Check-in', icon: 'MapPin', desc: 'Settle in and change into Matching PJs! And get ready to play some games' },
-                { id: 't3', time: 'Night', title: 'Pool Party', icon: 'Utensils', desc: 'Get into your theme bikinis (any color for bridesmaids and white for the bride) and party all night!' },
+                { id: 't1', time: 'Evening', title: 'Touchdown in Paradise!', icon: 'Plane', desc: 'Grab your bags and let\'s get this fiesta started! 🌴🍹' },
+                { id: 't2', time: 'Evening', title: 'Villa Vibes & PJ Party', icon: 'MapPin', desc: 'Slip into those matching jammies, and let the games begin. Loser takes a shot! 🎀🎲' },
+                { id: 't3', time: 'Night', title: 'Pool Party', icon: 'Utensils', desc: 'Slip into your theme swimwear (White for the Bride, Colors for the Tribe) and let\'s make a splash! Things might get a little wet and wild... 👙💦' },
             ]
         },
         {
             day: 'Saturday',
             date: 'Nov 29',
             items: [
-                { id: 'f1', time: 'Morning', title: 'Brunch at the Hotel', icon: 'Coffee', desc: 'Probably a slow/relaxed morning after the late night. Chill by the beach or do whatever in the Resort.' },
-                { id: 'f2', time: 'Afternoon', title: 'Private Yacht Time', icon: 'Sun', desc: 'Private Yacht in Cancun (arrive by 12:45pm and ~2hrs) Includes Snorkeling, Hotel Pick-up and drop-off coordinated with vendor. Bride will be in a blue bikini and everyone else in black bikinis!' },
-                { id: 'f3', time: '7PM', title: 'Taboo Mediterranean Combined Bach Dinner', icon: 'Utensils', desc: 'Girls wear Cocktail Dresses and the guys wear suits. Let\'s celebrate in style for Simmu and Saharsh\'s last splash bach!' },
-                { id: 'f4', time: '9PM', title: 'Head back to Hotel', icon: 'MapPin', desc: 'Change into mermaids and matrimony fits for Coco Bongo Night Club!' },
-                { id: 'f5', time: '10PM', title: 'Head to Coco Bongo', icon: 'Music', desc: 'Hotel pick and drop-off after Coco Bongo will be provided' },
+                { id: 'f1', time: 'Morning', title: 'Hangover Helper Brunch', icon: 'Coffee', desc: 'A slow morning to recover from last night\'s shenanigans. 🍳🥂' },
+                { id: 'f2', time: 'Afternoon', title: 'Nauti Bride & Crew', icon: 'Sun', desc: 'All aboard! Bride in Blue, Squad in Black. Get ready to sip and sunbathe like queens. What happens on the yacht, stays on the yacht... ⚓️🤫' },
+                { id: 'f3', time: '7PM', title: 'Last Splash Dinner', icon: 'Utensils', desc: 'Glam up, ladies! Girls in Cocktail Dresses, Guys in Suits. Time to toast to Simmu & Saharsh in style! 💃🕺' },
+                { id: 'f4', time: '9PM', title: 'Quick Change into Mermaids and Matrimony fits', icon: 'MapPin', desc: 'Swap those heels for dancing shoes. It\'s about to get magical. ✨🧜‍♀️' },
+                { id: 'f5', time: '10PM', title: 'Coco Bongo Chaos', icon: 'Music', desc: 'The main event! Prepare for a night of sensory overload, dancing on tables, and memories we might forget. 🍾🎉' },
             ]
         },
         {
             day: 'Sunday',
             date: 'Nov 30',
             items: [
-                { id: 's1', time: 'Morning', title: 'Brunch and Spa', icon: 'Coffee', desc: 'Recover at the Hotel' },
-                { id: 's2', time: 'Afternoon', title: 'Hotel', icon: 'Sun', desc: 'Feel free to lay by Beach and join any of the beach activities near hotel' },
-                { id: 's3', time: 'Night', title: 'Hotel', icon: 'Moon', desc: 'Chill at Hotel and pack for flight back next day.' },
+                { id: 's1', time: 'Morning', title: 'The Morning After...', icon: 'Coffee', desc: 'Sunglasses on, voices down. Time to refuel and recount the night\'s events. 🕶️☕' },
+                { id: 's2', time: 'Afternoon', title: 'Beach Bumming', icon: 'Sun', desc: 'Lazy day by the ocean. Soaking up the sun and maybe one last margarita? We deserve it. 🏖️🍹' },
+                { id: 's3', time: 'Night', title: 'Cozy Night In', icon: 'Moon', desc: 'Pizza, face masks, and packing up. A chill end to the wildest weekend. 🍕🧖‍♀️' },
             ]
         },
         {
             day: 'Monday',
             date: 'Dec 1',
             items: [
-                { id: 'su1', time: 'Morning', title: 'Brunch', icon: 'Coffee', desc: 'Recovery brunch' },
-                { id: 'su2', time: 'Afternoon', title: 'Departures', icon: 'Plane', desc: 'Head to airport' },
+                { id: 'su1', time: 'Morning', title: 'Adios Brunch', icon: 'Coffee', desc: 'One last taco before we go. Trying not to cry because it\'s over. 🌮😢' },
+                { id: 'su2', time: 'Afternoon', title: 'Back to Reality', icon: 'Plane', desc: 'Safe travels home, beauties! Thanks for making this the best bach ever! ✈️💖' },
             ]
         }
     ];

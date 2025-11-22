@@ -39,17 +39,17 @@ const GuestForm = () => {
     },
     {
       name: 'Yashica',
-      arrival: 'TBD (provide flight times)',
+      arrival: '4:40 PM, Nov 28',
       departure: 'TBD (provide flight times)',
       note: true,
-      noteText: 'Needs to provide flight times'
+      noteText: 'Needs to provide departure time'
     },
     {
       name: 'Tanvi',
-      arrival: 'TBD (provide flight times)',
+      arrival: '4:40 PM, Nov 28',
       departure: 'TBD (provide flight times)',
       note: true,
-      noteText: 'Needs to provide flight times'
+      noteText: 'Needs to provide departure time'
     },
     {
       name: 'Cynthia',

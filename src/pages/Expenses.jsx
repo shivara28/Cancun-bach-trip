@@ -1,36 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { DollarSign, CreditCard, PieChart, Edit2, Save } from 'lucide-react';
+import { PieChart, Edit2, Save } from 'lucide-react';
 
 const Expenses = () => {
     const defaultCategories = [
-        { name: 'Accommodation', amount: 'TBD', desc: 'Airbnb Villa for 4 nights' },
-        { name: 'Activities', amount: 'TBD', desc: 'Chichen Itza, Boat Rental, Beach Club' },
-        { name: 'Food & Drinks', amount: 'TBD', desc: 'Groceries, Dinners, Drinks' },
+        { name: 'Accommodation', amount: 'Paid', desc: 'Booked & Paid based on room assignments' },
+        { name: 'Food & Drinks', amount: 'Included', desc: 'All-inclusive resort (except Taboo Dinner)' },
         { name: 'Transport', amount: 'TBD', desc: 'Airport transfers & Uber' },
+        {
+            name: 'Private Yacht (Sat Afternoon)',
+            amount: '$45 / person',
+            desc: 'Already booked. Tour around Isla Mujeres.',
+            links: [{ text: 'View Tour', url: 'https://www.getyourguide.com/cancun-l150/private-yacht-in-cancun-tour-around-isla-mujeres-t479110/?ranking_uuid=c0722932-5679-46ff-804c-08a0bf6be5f2' }]
+        },
+        {
+            name: 'Coco Bongo (Sat Night)',
+            amount: '$103.45 or $87',
+            desc: 'DO NOT BOOK. Includes unlimited drinks ($103) or no drinks ($87).',
+            links: [
+                { text: 'Unlimited Drinks Option', url: 'https://www.cocobongo.com/show/cancun/#' },
+                { text: 'No Drinks Option', url: 'https://www.getyourguide.com/cancun-l150/cancun-coco-bongo-nightclub-experience-t404040/?ranking_uuid=36a0c5da-e239-4f00-97a2-dbafcf41fafa' }
+            ]
+        },
+        { name: 'Sunday Morning Spa', amount: 'Varies', desc: 'Some services free. Inside all-inclusive hotel.' },
+        { name: 'Sunday Activities', amount: 'TBD', desc: 'Open to look ourselves near the hotel.' }
     ];
 
     const [categories, setCategories] = useState(defaultCategories);
-    const [totalPerPerson, setTotalPerPerson] = useState('TBD');
     const [isEditing, setIsEditing] = useState(false);
 
     // Load from localStorage on mount
     useEffect(() => {
-        const savedCategories = localStorage.getItem('expenseCategories');
-        const savedTotal = localStorage.getItem('expenseTotalPerPerson');
+        const savedCategories = localStorage.getItem('expenseCategories_v3');
         if (savedCategories) {
             setCategories(JSON.parse(savedCategories));
-        }
-        if (savedTotal) {
-            setTotalPerPerson(savedTotal);
         }
     }, []);
 
     // Save to localStorage whenever data changes
     useEffect(() => {
-        localStorage.setItem('expenseCategories', JSON.stringify(categories));
-        localStorage.setItem('expenseTotalPerPerson', totalPerPerson);
-    }, [categories, totalPerPerson]);
+        localStorage.setItem('expenseCategories_v3', JSON.stringify(categories));
+    }, [categories]);
 
     const handleCategoryEdit = (index, field, value) => {
         const newCategories = [...categories];
@@ -57,38 +67,7 @@ const Expenses = () => {
                     </button>
                 </div>
 
-                {/* Total Cost Card */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="bg-teal-900 text-white rounded-2xl p-8 mb-12 shadow-xl relative overflow-hidden"
-                >
-                    <div className="absolute top-0 right-0 -mt-4 -mr-4 w-32 h-32 bg-teal-800 rounded-full opacity-50 blur-2xl"></div>
-                    <div className="relative z-10">
-                        <h2 className="text-teal-200 text-sm font-bold uppercase tracking-widest mb-2">Estimated Total / Person</h2>
-                        {isEditing ? (
-                            <input
-                                type="text"
-                                value={totalPerPerson}
-                                onChange={(e) => setTotalPerPerson(e.target.value)}
-                                className="text-5xl font-serif mb-6 bg-transparent border-b-2 border-teal-600 focus:border-white outline-none w-full"
-                                placeholder="$TBD"
-                            />
-                        ) : (
-                            <div className="text-5xl font-serif mb-6">${totalPerPerson}</div>
-                        )}
-                        <div className="flex gap-4">
-                            <button className="flex items-center gap-2 bg-white text-teal-900 px-4 py-2 rounded-lg font-bold text-sm hover:bg-teal-50 transition-colors">
-                                <CreditCard size={16} />
-                                Venmo
-                            </button>
-                            <button className="flex items-center gap-2 bg-teal-800 text-white px-4 py-2 rounded-lg font-bold text-sm hover:bg-teal-700 transition-colors border border-teal-700">
-                                <DollarSign size={16} />
-                                Zelle
-                            </button>
-                        </div>
-                    </div>
-                </motion.div>
+
 
                 {/* Breakdown */}
                 <div className="space-y-6">
@@ -132,14 +111,32 @@ const Expenses = () => {
                                         />
                                     </div>
                                 ) : (
-                                    <div className="flex justify-between items-center">
-                                        <div>
-                                            <h3 className="font-bold text-teal-900">{cat.name}</h3>
-                                            <p className="text-sm text-gray-500">{cat.desc}</p>
+                                    <div className="flex flex-col gap-2">
+                                        <div className="flex justify-between items-start">
+                                            <div>
+                                                <h3 className="font-bold text-teal-900">{cat.name}</h3>
+                                                <p className="text-sm text-gray-500">{cat.desc}</p>
+                                                {cat.links && (
+                                                    <div className="flex flex-wrap gap-2 mt-2">
+                                                        {cat.links.map((link, i) => (
+                                                            <a
+                                                                key={i}
+                                                                href={link.url}
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                                className="text-xs bg-teal-50 text-teal-700 px-2 py-1 rounded-md hover:bg-teal-100 transition-colors border border-teal-100"
+                                                            >
+                                                                {link.text} ↗
+                                                            </a>
+                                                        ))}
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <p className="font-serif text-xl text-teal-700 whitespace-nowrap ml-4">{cat.amount}</p>
                                         </div>
-                                        <div className="font-serif text-xl text-teal-700">{cat.amount}</div>
                                     </div>
                                 )}
+
                             </motion.div>
                         ))}
                     </div>
@@ -149,8 +146,8 @@ const Expenses = () => {
                 <div className="mt-12 p-6 bg-teal-50 rounded-xl text-center text-teal-800 text-sm">
                     <p>Final costs will be totaled at the end.</p>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 };
 

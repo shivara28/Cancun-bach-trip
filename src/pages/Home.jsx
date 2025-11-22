@@ -4,7 +4,7 @@ import { Calendar, MapPin } from 'lucide-react';
 import GuestForm from '../components/GuestForm';
 
 const Home = () => {
-    const targetDate = new Date('2024-11-28T18:00:00-05:00'); // Assuming 2024 based on "End of Nov" context, user said Nov 28th
+    const targetDate = new Date('2025-11-28T18:00:00-05:00'); // Updated to 2025
     const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
     function calculateTimeLeft() {
@@ -37,11 +37,11 @@ const Home = () => {
         }
 
         timerComponents.push(
-            <div key={interval} className="flex flex-col items-center mx-2">
-                <span className="text-3xl md:text-5xl font-serif font-bold text-teal-800">
+            <div key={interval} className="flex flex-col items-center mx-2 md:mx-4">
+                <span className="text-4xl md:text-6xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-b from-teal-500 to-purple-600 drop-shadow-sm">
                     {timeLeft[interval]}
                 </span>
-                <span className="text-xs md:text-sm uppercase tracking-widest text-teal-600/80">
+                <span className="text-xs md:text-sm uppercase tracking-widest text-teal-600/80 mt-1 font-medium">
                     {interval}
                 </span>
             </div>
@@ -87,13 +87,19 @@ const Home = () => {
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4, duration: 0.8 }}
-                    className="bg-white/80 backdrop-blur-lg rounded-3xl shadow-xl shadow-teal-100/50 p-8 border border-white"
+                    className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-xl shadow-teal-100/50 p-8 border border-white/50 relative overflow-hidden"
                 >
-                    <h3 className="text-center text-teal-900/60 uppercase tracking-widest text-xs font-bold mb-6">
-                        Time until takeoff
+                    {/* Decorative Elements */}
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-teal-300 via-purple-300 to-teal-300" />
+
+                    <h3 className="text-center text-teal-800 uppercase tracking-widest text-sm font-bold mb-8 flex items-center justify-center gap-3">
+                        <span className="text-purple-400">✨</span>
+                        Trading Tails for Veils in...
+                        <span className="text-purple-400">✨</span>
                     </h3>
-                    <div className="flex justify-center items-center flex-wrap">
-                        {timerComponents.length ? timerComponents : <span className="text-2xl font-serif text-teal-800">It's Party Time! 🎉</span>}
+
+                    <div className="flex justify-center items-center flex-wrap gap-4 md:gap-8">
+                        {timerComponents.length ? timerComponents : <span className="text-3xl font-serif text-teal-800 animate-bounce">It's Party Time! 🧜‍♀️🎉</span>}
                     </div>
                 </motion.div>
             </div>
