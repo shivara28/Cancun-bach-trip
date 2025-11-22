@@ -5,6 +5,7 @@ import { CheckCircle2, Sparkles, Edit2, Save, Trash2, Plus } from 'lucide-react'
 const PackingList = () => {
     const defaultEssentials = [
         'Passport / ID', 'Flight Info', 'Cash (Pesos/USD) & Cards',
+        'Summer Outfits (Weather will be 70s/80s)', 'Shorts', 'Summer Beach Dresses',
         'Sunscreen (Face & Body)', 'Sunglasses', 'Hat / Visor', 'Beach Bag',
         '3 Swimsuits (1 for Sunday if you want a diff one)', 'Cover-ups', 'Flip Flops / Sandals',
         'Heels / Wedges (for Dinner/Club)', 'Casual Shoes (Travel/Walking)',

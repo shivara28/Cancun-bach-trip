@@ -6,24 +6,27 @@ const Expenses = () => {
     const defaultCategories = [
         { name: 'Accommodation', amount: 'Paid', desc: 'Booked & Paid based on room assignments' },
         { name: 'Food & Drinks', amount: 'Included', desc: 'All-inclusive resort (except Taboo Dinner)' },
+        { name: 'Taboo Mediterranean Dinner', amount: 'TBD', desc: '' },
         { name: 'Transport', amount: 'TBD', desc: 'Airport transfers & Uber' },
+        { name: 'Transport to Private Yacht', amount: '$70 total', desc: 'Round trip hotel pickup/drop off for everyone' },
+        { name: 'Transport to/from Coco Bongo', amount: '$70 total', desc: 'Round trip hotel pickup and drop off for everyone' },
         {
             name: 'Private Yacht (Sat Afternoon)',
             amount: '$45 / person',
-            desc: 'Already booked. Tour around Isla Mujeres.',
+            desc: 'Already booked.',
             links: [{ text: 'View Tour', url: 'https://www.getyourguide.com/cancun-l150/private-yacht-in-cancun-tour-around-isla-mujeres-t479110/?ranking_uuid=c0722932-5679-46ff-804c-08a0bf6be5f2' }]
         },
         {
             name: 'Coco Bongo (Sat Night)',
-            amount: '$103.45 or $87',
-            desc: 'DO NOT BOOK. Includes unlimited drinks ($103) or no drinks ($87).',
+            amount: '$103.45 or $87 / person',
+            desc: 'BOOK SOON. Includes unlimited drinks ($103) or no drinks ($87).',
             links: [
                 { text: 'Unlimited Drinks Option', url: 'https://www.cocobongo.com/show/cancun/#' },
                 { text: 'No Drinks Option', url: 'https://www.getyourguide.com/cancun-l150/cancun-coco-bongo-nightclub-experience-t404040/?ranking_uuid=36a0c5da-e239-4f00-97a2-dbafcf41fafa' }
             ]
         },
-        { name: 'Sunday Morning Spa', amount: 'Varies', desc: 'Some services free. Inside all-inclusive hotel.' },
-        { name: 'Sunday Activities', amount: 'TBD', desc: 'Open to look ourselves near the hotel.' }
+        { name: 'Sunday Morning Spa', amount: 'TBD', desc: 'Some services free. Inside all-inclusive hotel.' },
+        { name: 'Sunday Activities', amount: 'TBD', desc: 'If interested - Open to look ourselves near the hotel.' }
     ];
 
     const [categories, setCategories] = useState(defaultCategories);
