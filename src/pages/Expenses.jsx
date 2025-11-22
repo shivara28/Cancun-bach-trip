@@ -8,7 +8,7 @@ const Expenses = () => {
         { name: 'Food & Drinks', amount: 'Included', desc: 'All-inclusive resort (except Taboo Dinner)' },
         { name: 'Taboo Mediterranean Dinner', amount: 'TBD', desc: '' },
         { name: 'Transport', amount: 'TBD', desc: 'Airport transfers & Uber' },
-        { name: 'Transport to Private Yacht', amount: '$70 total for the group', desc: 'Round trip hotel pickup/drop off for everyone' },
+        { name: 'Transport to Private Yacht', amount: '$70 total for the group', desc: 'Round trip hotel pickup/drop off for everyone ($8.75 per person)' },
         { name: 'Transport to/from Coco Bongo', amount: 'TBD', desc: 'Round trip hotel pickup and drop off for everyone' },
         {
             name: 'Private Yacht (Sat Afternoon)',

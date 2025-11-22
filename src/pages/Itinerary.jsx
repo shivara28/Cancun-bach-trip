@@ -18,7 +18,7 @@ const Itinerary = () => {
             date: 'Nov 29',
             items: [
                 { id: 'f1', time: 'Morning', title: 'Hangover Helper Brunch', icon: 'Coffee', desc: 'A slow morning to recover from last night\'s shenanigans. 🍳🥂' },
-                { id: 'f2', time: 'Afternoon', title: 'Nauti Bride & Crew', icon: 'Sun', desc: 'All aboard! Bride in Blue, Squad in Black. Get ready to sip and sunbathe like queens. What happens on the yacht, stays on the yacht... ⚓️🤫' },
+                { id: 'f2', time: '12:45pm - 3pm', title: 'Nauti Bride & Crew', icon: 'Sun', desc: 'All aboard! Bride in Blue, Squad in Black. Get ready to sip and sunbathe like queens. What happens on the yacht, stays on the yacht... ⚓️🤫' },
                 { id: 'f3', time: '7PM', title: 'Last Splash Dinner', icon: 'Utensils', desc: 'Glam up, ladies! Girls in Cocktail Dresses, Guys in Suits. Time to toast to Simmu & Saharsh in style! 💃🕺' },
                 { id: 'f4', time: '9PM', title: 'Quick Change into Mermaids and Matrimony fits', icon: 'MapPin', desc: 'Swap those heels for dancing shoes. It\'s about to get magical. ✨🧜‍♀️' },
                 { id: 'f5', time: '10PM', title: 'Coco Bongo Chaos', icon: 'Music', desc: 'The main event! Prepare for a night of sensory overload, dancing on tables, and memories we might forget. 🍾🎉' },
