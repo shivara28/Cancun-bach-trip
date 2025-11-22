@@ -8,8 +8,8 @@ const Expenses = () => {
         { name: 'Food & Drinks', amount: 'Included', desc: 'All-inclusive resort (except Taboo Dinner)' },
         { name: 'Taboo Mediterranean Dinner', amount: 'TBD', desc: '' },
         { name: 'Transport', amount: 'TBD', desc: 'Airport transfers & Uber' },
-        { name: 'Transport to Private Yacht', amount: '$70 total', desc: 'Round trip hotel pickup/drop off for everyone' },
-        { name: 'Transport to/from Coco Bongo', amount: '$70 total', desc: 'Round trip hotel pickup and drop off for everyone' },
+        { name: 'Transport to Private Yacht', amount: '$70 total for the group', desc: 'Round trip hotel pickup/drop off for everyone' },
+        { name: 'Transport to/from Coco Bongo', amount: 'TBD', desc: 'Round trip hotel pickup and drop off for everyone' },
         {
             name: 'Private Yacht (Sat Afternoon)',
             amount: '$45 / person',
@@ -25,7 +25,7 @@ const Expenses = () => {
                 { text: 'No Drinks Option', url: 'https://www.getyourguide.com/cancun-l150/cancun-coco-bongo-nightclub-experience-t404040/?ranking_uuid=36a0c5da-e239-4f00-97a2-dbafcf41fafa' }
             ]
         },
-        { name: 'Sunday Morning Spa', amount: 'TBD', desc: 'Some services free. Inside all-inclusive hotel.' },
+        { name: 'Sunday Morning Spa (Optional)', amount: 'TBD', desc: 'Some services free. Inside all-inclusive hotel.' },
         { name: 'Sunday Activities', amount: 'TBD', desc: 'If interested - Open to look ourselves near the hotel.' }
     ];
 
